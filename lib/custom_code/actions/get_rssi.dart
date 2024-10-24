@@ -7,6 +7,8 @@ import 'package:flutter/material.dart';
 // Begin custom action code
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
 
+import '/custom_code/widgets/index.dart';
+
 import 'package:flutter_blue_plus/flutter_blue_plus.dart';
 
 Future<int> getRssi(BTDeviceStruct deviceInfo) async {
