@@ -319,6 +319,27 @@ class _DevicePageWidgetState extends State<DevicePageWidget> {
                     ),
                   ),
                 ),
+                FFButtonWidget(
+                  onPressed: () async {
+                    context.pushNamed('oscilloscope');
+                  },
+                  text: 'Button',
+                  options: FFButtonOptions(
+                    height: 66.0,
+                    padding:
+                        EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+                    iconPadding:
+                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                    color: FlutterFlowTheme.of(context).tertiary,
+                    textStyle: FlutterFlowTheme.of(context).titleSmall.override(
+                          fontFamily: 'Montserrat',
+                          color: Colors.white,
+                          letterSpacing: 0.0,
+                        ),
+                    elevation: 0.0,
+                    borderRadius: BorderRadius.circular(8.0),
+                  ),
+                ),
               ],
             ),
           ),
