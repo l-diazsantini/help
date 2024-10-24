@@ -11,16 +11,16 @@ import 'package:flutter/material.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'dart:async'; // For Stream
 
-class RealTimeGraph extends StatefulWidget {
+class OscilloscopeGraph extends StatefulWidget {
   final Stream<List<double>> dataStream; // Accept a stream of data
 
-  RealTimeGraph({Key? key, required this.dataStream}) : super(key: key);
+  OscilloscopeGraph({Key? key, required this.dataStream}) : super(key: key);
 
   @override
-  _RealTimeGraphState createState() => _RealTimeGraphState();
+  _OscilloscopeGraphState createState() => _OscilloscopeGraphState();
 }
 
-class _RealTimeGraphState extends State<RealTimeGraph> {
+class _OscilloscopeGraphState extends State<OscilloscopeGraph> {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<List<double>>(
@@ -56,6 +56,3 @@ class _RealTimeGraphState extends State<RealTimeGraph> {
     );
   }
 }
-
-// Set your widget name, define your parameter, and then add the
-// boilerplate code using the green button on the right!
