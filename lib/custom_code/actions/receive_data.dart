@@ -7,18 +7,12 @@ import 'package:flutter/material.dart';
 // Begin custom action code
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
 
-import '/custom_code/widgets/index.dart';
-
 import 'package:flutter_blue_plus/flutter_blue_plus.dart';
-import 'dart:async'; // Import for StreamController
-
-final StreamController<String> _dataStreamController =
-    StreamController<String>();
-
-// Expose the stream so it can be used in the widget
-Stream<String> get dataStream => _dataStreamController.stream;
 
 Future<void> receiveData(BTDeviceStruct deviceInfo) async {
+  List<double> chartData = List.from(getLocalState('bleDataList') ??
+      []); // Retrieve existing data or initialize empty list
+
   try {
     final device = BluetoothDevice.fromId(deviceInfo.id);
     final services = await device.discoverServices();
@@ -28,22 +22,32 @@ Future<void> receiveData(BTDeviceStruct deviceInfo) async {
         final isRead = characteristic.properties.read;
         final isNotify = characteristic.properties.notify;
 
-        // If the characteristic supports notifications, enable them
-        if (isNotify) {
+        if (isRead && isNotify) {
+          // Enable notifications for continuous data reception
           await characteristic.setNotifyValue(true);
 
-          // Listen for characteristic value changes
+          // Listen for data notifications from the ESP32
           characteristic.value.listen((value) {
-            // Convert the value to a string
             final receivedData = String.fromCharCodes(value);
 
-            // Push the new data to the stream
-            _dataStreamController.add(receivedData);
+            // Convert the received data to a double and add to chartData
+            double newData =
+                double.tryParse(receivedData) ?? 0; // Parse data safely
+
+            chartData.add(newData);
+
+            // Optionally, limit the data points to avoid memory issues
+            if (chartData.length > 50) {
+              chartData.removeAt(0); // Remove the oldest data point
+            }
+
+            // Update the local state in FlutterFlow to reflect the new data
+            setLocalState('bleDataList', chartData);
           });
         }
       }
     }
   } catch (e) {
-    debugPrint(e.toString());
+    debugPrint('Error receiving data: ${e.toString()}');
   }
 }

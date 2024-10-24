@@ -77,12 +77,16 @@ class _OscilloscopeWidgetState extends State<OscilloscopeWidget> {
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: [
-              Container(
-                width: 350.0,
-                height: 600.0,
-                child: custom_widgets.OscilloscopeGraph(
+              Align(
+                alignment: AlignmentDirectional(0.0, 0.0),
+                child: Container(
                   width: 350.0,
-                  height: 600.0,
+                  height: 350.0,
+                  child: custom_widgets.RealTimeChart(
+                    width: 350.0,
+                    height: 350.0,
+                    data: _model.bleDataList,
+                  ),
                 ),
               ),
             ],

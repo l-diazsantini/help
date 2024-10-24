@@ -34,7 +34,6 @@ dependencies:
   collection: 1.18.0
   device_info_plus: 10.1.2
   device_info_plus_platform_interface: 7.0.1
-  fl_chart: ^0.40.0
   flutter_animate: 4.5.0
   flutter_blue_plus:
   flutter_cache_manager: 3.4.1
@@ -68,6 +67,7 @@ dependencies:
   shared_preferences_windows: 2.4.1
   sqflite: 2.3.3+1
   sqflite_common: 2.5.4+3
+  syncfusion_flutter_charts:
   timeago: 3.6.1
   url_launcher: 6.3.0
   url_launcher_android: 6.3.10
@@ -84,6 +84,7 @@ dependencies:
 
 dependency_overrides:
   http: 1.2.2
+  intl: 0.19.0
   uuid: ^4.0.0
 
 dev_dependencies:

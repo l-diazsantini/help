@@ -1,1 +1,1 @@
-export 'oscilloscope_graph.dart' show OscilloscopeGraph;
+export 'real_time_chart.dart' show RealTimeChart;
