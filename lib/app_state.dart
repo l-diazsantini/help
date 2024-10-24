@@ -104,6 +104,35 @@ class FFAppState extends ChangeNotifier {
     yaxis.insert(index, value);
     prefs.setStringList('ff_yaxis', _yaxis.map((x) => x.toString()).toList());
   }
+
+  List<double> _bleDataList = [];
+  List<double> get bleDataList => _bleDataList;
+  set bleDataList(List<double> value) {
+    _bleDataList = value;
+  }
+
+  void addToBleDataList(double value) {
+    bleDataList.add(value);
+  }
+
+  void removeFromBleDataList(double value) {
+    bleDataList.remove(value);
+  }
+
+  void removeAtIndexFromBleDataList(int index) {
+    bleDataList.removeAt(index);
+  }
+
+  void updateBleDataListAtIndex(
+    int index,
+    double Function(double) updateFn,
+  ) {
+    bleDataList[index] = updateFn(_bleDataList[index]);
+  }
+
+  void insertAtIndexInBleDataList(int index, double value) {
+    bleDataList.insert(index, value);
+  }
 }
 
 void _safeInit(Function() initializeField) {

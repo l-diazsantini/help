@@ -19,6 +19,8 @@ class DisplayReceivedDataModel
   ///  State fields for stateful widgets in this component.
 
   InstantTimer? receivedDataTimer;
+  // Stores action output result for [Custom Action - receiveData] action in DisplayReceivedData widget.
+  String? receivedData;
 
   @override
   void initState(BuildContext context) {}

@@ -43,7 +43,7 @@ class _DisplayReceivedDataWidgetState extends State<DisplayReceivedDataWidget> {
       _model.receivedDataTimer = InstantTimer.periodic(
         duration: Duration(milliseconds: 1000),
         callback: (timer) async {
-          await actions.receiveData(
+          _model.receivedData = await actions.receiveData(
             widget!.device!,
           );
 
